@@ -9,6 +9,7 @@
       "esnext.asynciterable"
     ],
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "outDir": "./dist",
     "moduleResolution": "node",

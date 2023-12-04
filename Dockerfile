@@ -1,17 +1,17 @@
-FROM node:latest
+FROM node:lts-alpine
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-
-WORKDIR /home/node/app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-USER node
-
 RUN npm install
 
-COPY --chown=node:node . .
+COPY . .
 
-EXPOSE 3000
+RUN npm install -g typescript
 
-CMD [ "npm", "start" ]
+RUN rimraf dist/
+
+RUN tsc
+
+CMD ["npm", "start"]
